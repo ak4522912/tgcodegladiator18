@@ -1,0 +1,53 @@
+ public static void main(String[] args) throws Exception{
+        // TODO code application logic here
+    Scanner sc=new Scanner(System.in);
+    
+    int i,dno,count=0;
+            int n=sc.nextInt();
+    if(n<1||n>100)
+    {
+    throw new Exception("value beyond domain");
+    }
+    int arr[]=new int[n];
+    for(i=0;i<n;i++)
+    {
+    arr[i]=sc.nextInt();
+    if(arr[i]<-1||arr[i]>n-1)
+    {throw new Exception("Value beyond domain");}
+    }
+    dno=sc.nextInt();
+    if(dno<0||dno>n-1)
+    {
+    throw new Exception("Value beyond domain");
+    }
+    if(dno==0)
+    {
+    count=0;
+    }
+    else{
+        arr=delete(dno,arr,n);
+    i=n-1;
+    while(2*i+1>=n)
+    {
+    if(arr[i]!=-1)
+    {
+    count++;
+    }
+    i--;
+    }
+    }
+    System.out.println(count);
+    }
+    public static int[] delete(int dno, int[] arr,int n)
+    {
+        if(2*dno+2<n)
+        {
+        delete(2*dno+2,arr,n);
+        }
+        if(2*dno+1<n)
+        {
+        delete(2*dno+1,arr,n);
+        }
+        arr[dno]=-1;
+    return arr;
+    }
